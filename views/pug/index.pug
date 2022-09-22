@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Plantillas Pug
+    body 
+
+       form(action='/products', method='POST')
+        p
+        | Nombre: 
+        input(type='text', name='title', value='' required autofocus)
+        br
+        br
+        |          Precio: 
+        input(type='text', name='price', value='' required autofocus)
+        br
+        br
+        |          Imagen: 
+        input(type='text', name='thumbnail', value='' required autofocus)
+        br
+        br
+        input(type="submit" value="Crear producto")
+    br
+    if products.length > 0
+       table 
+         tr
+           th Nombre
+           th Precio
+           th Foto
+           
+         each product in products 
+           tr
+             td= product.title
+             td= product.price
+             td 
+              img(src=product.thumbnail, alt="product.title", srcset="")
+    else 
+      span No hay productos
+            
+
